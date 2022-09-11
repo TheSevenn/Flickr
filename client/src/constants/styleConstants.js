@@ -8,13 +8,15 @@ const gap =  {
     huge:"7.2rem",
     ultra:"9.6rem"
   }
+  
   const fontSize = {
     title: "4.8rem",
     heading: "3.2rem",
     subheading: "2.4rem",
+    strongAlt:"2rem",
     strong:"1.7rem",
     text: "1.6rem",
-    other: "1.4rem",
+    em: "1.4rem",
   }
 
   const weight = {

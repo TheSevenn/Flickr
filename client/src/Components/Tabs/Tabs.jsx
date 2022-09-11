@@ -8,8 +8,6 @@ export default function Tabs() {
     "Latest",
     "Discover",
     "Popular",
-    "Movies",
-    "TV Shows",
     "Top Rated",
   ];
 

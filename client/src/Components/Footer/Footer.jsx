@@ -1,7 +1,7 @@
 import { FooterStyled } from "./Footer.styled";
 import { LogoStyled, BrandStyled } from "../../styled-shared/Logo.styled";
 import { Container } from "../../styled-shared/Contianer.styled";
-import { Paragraph } from "../../styled-shared/Paragraph.styled";
+import { Paragraph } from "../../styled-shared/Typography.styled";
 import logo from "../../assets/flickrLogo.svg";
 import brand from "../../assets/flickr.svg";
 
