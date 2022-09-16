@@ -1,20 +1,21 @@
 import React from "react";
 
 import { CardSmallStyled, Thumbnail } from "./CardSmall.styled";
-import { Em, Strong } from "../../../styled-shared/Typography.styled";
-import { FlexAlt } from "../../../styled-shared/Layouts/Flex.styled";
 
 export default function CardSmall() {
 
-    const genre = "Fantasy";
+    const genre = "Fantasy,Reomace";
     const year = "2018";
     return (
         <CardSmallStyled>
-            <Thumbnail></Thumbnail>
-            <FlexAlt>
-                <Strong color={props => props.theme.colors.themeColor}>Aladin</Strong>
-                <Em color={props => props.theme.colors.mutedBlackColor}>{genre}    -{year}</Em>
-            </FlexAlt>
+            <Thumbnail src="https://webneel.com/daily/sites/default/files/images/daily/09-2019/2-movie-poster-design-aladdin-disney-glossy-composite.jpg" loading="lazy" />
+
+            <h3>Aladin</h3>
+            <h4>
+                <span>{ genre }</span>
+                <span>&#8226; { year }</span>
+            </h4>
+
         </CardSmallStyled>
     )
 }

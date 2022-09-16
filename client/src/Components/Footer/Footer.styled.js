@@ -1,15 +1,39 @@
 import styled from "styled-components";
 
-import {FlexRow} from "../../styled-shared/Layouts/Flex.styled";
-import {gap} from "../../constants/styleConstants";
+import { colors, FlexCol, fontSize, gap } from "../_shared.styled";
 
 export const FooterStyled = styled.footer`
-    background-color:${({theme})=>theme.colors.themeColor};
-    padding:${gap.xxl};
-    ${FlexRow};
+    background-color:${colors.themeColor};
+    ${FlexCol};
+    justify-content: center;
+    align-items: center;
+    gap:${gap.l};
+  
+    
+    &>div{
+        ${FlexCol};
+        justify-content: center;
+        align-items: center;
+        width:min(80rem,80vw);
+        gap:${gap.l};
+        line-height: 1.4;
+        margin-block: ${gap.xl};
 
+        & a{
+            color:${colors.altColor};
+        }
+    }
     p{
-        margin-left:${gap.xl}
+        font-size: ${fontSize.text};
+        color:${colors.mutedLightColor}
+    }
+
+    &>p{
+        color:${colors.mutedBrightColor};
+
+        a{
+            color:${colors.brightColor};
+        }
     }
 
 `

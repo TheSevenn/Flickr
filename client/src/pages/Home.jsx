@@ -1,33 +1,24 @@
 import React from "react";
 
-import Hero from "../Components/Hero/Hero";
-import Tabs from "../Components/Tabs/Tabs";
-import Category from "../Components/Category/Category";
+import Hero from "../components/Hero/Hero";
+import Search from "../components/Search/Search";
+import Tabs from "../components/Tabs/Tabs";
+import Category from "../components/Category/Category";
+import { colors } from "../components/_shared.styled";
 
-import Modal from "../Components/Modal/Modal";
-import CardLong from "../Components/Card/CardLong/CardLong";
-
-export default function Home(){
+export default function Home() {
     return (
         <React.Fragment>
-        <Hero/>
-        <Tabs/>
-        <Category 
-        topic="Latest Movies" 
-        color={props=>props.theme.colors.brandSecondaryColor}
-        bgColor={props=>props.theme.colors.mutedBrandSecondaryColor}
-         />
+            <Hero />
+            <Search />
+            <Tabs />
+            <Category category="Latest Movies"
+                bgcolor={ colors.mutedBrandColor }
+                color={ colors.brandColor } />
 
-        <Category
-        topic="Latest TV Shows"
-        color={props=>props.theme.colors.uiMajorColor}
-        bgColor={props=>props.theme.colors.mutedUiMajorColor}
-         />
-
-         {/* temprary component render start here . remove later */}
-         <CardLong/>
-         {/*  temp. comp. ends year */}
-         <Modal/>
+            <Category category="Latest TV Shows"
+                bgcolor={ colors.mutedBrightColor }
+                color={ colors.brightColor } />
         </React.Fragment>
     )
 }

@@ -1,27 +1,26 @@
 import ReactDom from "react-dom";
-import { FaArrowRight,FaTimes } from "react-icons/fa"
+import { FaArrowRight } from "react-icons/fa"
 
-import { ModalContainer, ModalStyled } from "./Modal.styled";
-import { LogoStyled } from "../../styled-shared/Logo.styled";
-import { ButtonRound } from "../../styled-shared/Button.styled";
-import { Subheading } from "../../styled-shared/Heading.styled";
+import { ModalContainer, ModalStyled, CancelIcon } from "./Modal.styled";
+import { LogoStyled } from "../_shared.styled/Logo.styled";
+import { ButtonRound } from "../_shared.styled/Button.styled";
 import logo from "../../assets/flickrLogo.svg";
-import { fontSize } from "../../constants/styleConstants";
+import { fontSize } from "../_shared.styled";
 
 export default function Modal() {
     return ReactDom.createPortal(
         <ModalContainer>
             <ModalStyled>
-                <FaTimes fontSize={fontSize.subheading} style={{position:"absolute",right:"4%",top:"4%"}}/>
-                <LogoStyled src={logo} size="6rem" />
-                <Subheading color={props => props.theme.colors.uiMajorColor} fontSize={fontSize.strong}>
+                <CancelIcon />
+                <LogoStyled src={ logo } size="6rem" />
+                <h3>
                     Sign up
-                </Subheading>
+                </h3>
                 <input type="text" name="nickName" id="nickName" placeholder="Your Nickname" />
                 <input type="text" name="userName" id="userName" placeholder="choose a username" />
-                <ButtonRound><FaArrowRight style={{ fontSize:fontSize.subheading, horizontalAlign: "center" }} /></ButtonRound>
+                <ButtonRound><FaArrowRight style={ { fontSize: fontSize.subheading, horizontalAlign: "center" } } /></ButtonRound>
             </ModalStyled>
         </ModalContainer>,
-        document.getElementById("portal")
+        document.getElementById( "portal" )
     )
 }

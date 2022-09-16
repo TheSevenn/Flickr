@@ -1,16 +1,21 @@
 import React from "react";
 
 import CardSmall from "../Card/CardSmall/CardSmall";
-import { fontSize } from "../../constants/styleConstants";
 import { CategoryContainer } from "./Category.styled";
-import { Subheading } from "../../styled-shared/Heading.styled";
 
-export default function Category({topic,color,bgColor}){
+export default function Category( { category, color, bgcolor } ) {
     return (
-            <CategoryContainer bgColor={bgColor} >
-                <Subheading fontSize={fontSize.strongAlt} color={color}>{topic}</Subheading>
-
-                <CardSmall/>
-            </CategoryContainer>
+        <CategoryContainer bgcolor={ bgcolor } color={ color }>
+            <h3>{ category }</h3>
+            <div>
+                <CardSmall />
+                <CardSmall />
+                <CardSmall />
+                <CardSmall />
+                <CardSmall />
+                <CardSmall />
+                <CardSmall />
+            </div>
+        </CategoryContainer>
     )
 }

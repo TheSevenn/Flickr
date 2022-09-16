@@ -1,21 +1,45 @@
 import styled from "styled-components";
 
-import { Container } from "../../styled-shared/Contianer.styled";
-import {gap} from "../../constants/styleConstants";
-
-export const HeroContainer = styled(Container)`
-    background-image:linear-gradient(90deg,${props=>props.theme.colors.themeColor},${props=>props.theme.colors.uiMajorColor});
-    margin:0 ${gap.huge};
-    position:relative;
+import { gap, colors, fontSize, weight, FlexCol } from "../_shared.styled";
+export const HeroBackdrop = styled.section`
+   background-image: url(https://parade.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_700/MTkwNTgxMjk2NzkzNTI3NDIx/moonlight--cast-amp-crew-hometown-premiere-in-miami.webp),
+    linear-gradient(90deg,${colors.themeColor},${colors.brightColor});
+    background-repeat: no-repeat;
+    background-position:center center;
+    background-size: cover;
+    margin:0 min(${gap.huge},6vw);
     isolation:isolate;
-    padding:  ${gap.xxl};
+    /* padding: ${gap.xxl}; */
+    height:30rem;
+    mix-blend-mode: color-burn;
+    `
 
+export const HeroContainer = styled.div`
+    position:relative;
+    width: 100%;
+    height:100%;
+    ${FlexCol};
+    align-items: flex-start;
+    justify-content: center;
+    padding:${gap.xxl};
     &::after{
-        position:absolute;
+        position: absolute;
+        background-color:#000;
         content:"";
         inset:0;
-        background-color:#134E6F;
-        mix-blend-mode:overlay;
+        mix-blend-mode:color-dodge;
         z-index:-1;
     }
-`
+
+    & > h2{
+            font-size: ${fontSize.title};
+            color:${colors.brightColor};
+            font-weight: ${weight.bold};
+        }
+
+    & > h3{
+        font-size: ${fontSize.heading};
+        color:${colors.brandColor};
+        font-weight: ${weight.bold};
+    }
+    `

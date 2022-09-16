@@ -1,22 +1,17 @@
 import { FooterStyled } from "./Footer.styled";
-import { LogoStyled, BrandStyled } from "../../styled-shared/Logo.styled";
-import { Container } from "../../styled-shared/Contianer.styled";
-import { Paragraph } from "../../styled-shared/Typography.styled";
+import { LogoStyled } from "../_shared.styled";
 import logo from "../../assets/flickrLogo.svg";
-import brand from "../../assets/flickr.svg";
 
 export default function Footer() {
-  return (
-    <FooterStyled>
-      <Container>
-        <LogoStyled src={logo} />
-        <BrandStyled src={brand} />
-      </Container>
-
-      <Container>
-        <Paragraph>Hi, user so we finally met at the bottom, you should know that</Paragraph>
-        <Paragraph>All data on this website is from TMDB Api.</Paragraph>
-      </Container>
-    </FooterStyled>
-  );
+    const user = "jutsu";
+    return (
+        <FooterStyled>
+            <div>
+                <LogoStyled src={ logo } size="7rem" />
+                <p>Hi, { user } so we finally met at the bottom, first of all thanks for using the <strong>FLICKR</strong>. And you should know that all the information related to movies and shows on our app is sourced from <a href="https://www.themoviedb.org/" target="_tmbd" ><strong>TMBD</strong></a> api.
+                </p>
+                <p>designed and developed by <a href="https://linkedin.com/in/thesevenn/" target=""> <strong>Sevenn</strong></a></p>
+            </div>
+        </FooterStyled>
+    );
 }

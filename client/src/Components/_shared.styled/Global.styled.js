@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
    *,*::before,*::after{
@@ -10,11 +10,14 @@ export const GlobalStyles = createGlobalStyle`
    html{
     font-size:10px;
     font-family:'Montserrat', sans-serif; 
+    overflow-x:hidden;
+    scroll-behavior: smooth;
+
    }
 
-   img{
+   /* img{
     max-width:100%;
-   }
+   } */
 
    li{
     list-style:none;

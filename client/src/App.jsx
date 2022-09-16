@@ -1,21 +1,19 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
 
-import { GlobalStyles } from "./styled-shared/Global.styled";
-import {theme} from "./styled-shared/Theme";
-import Header from "./Components/Header/Header";
-import Pages from "./pages/";
-import Footer from "./Components/Footer/Footer";
+import { GlobalStyles } from "./components/_shared.styled/";
+import Header from "./components/Header/Header";
+import Home from "./pages/Home";
+import Footer from "./components/Footer/Footer";
+import Content from "./pages/Content";
 
-export default function App(){
+export default function App() {
     return (
-        <ThemeProvider theme={theme}>
-            <React.Fragment>
-              <GlobalStyles/>
-              <Header/>
-                <Pages.Home/>
-                <Footer/>
-            </React.Fragment>
-        </ThemeProvider>
+        <React.Fragment>
+            <GlobalStyles />
+            <Header />
+            <Home />
+            <Content />
+            <Footer />
+        </React.Fragment>
     )
 }

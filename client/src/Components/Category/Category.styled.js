@@ -1,13 +1,24 @@
 import styled from "styled-components";
 
-import { Container } from "../../styled-shared/Contianer.styled";
-import {gap,radius} from "../../constants/styleConstants";
+import { fontSize, gap, radius, weight } from "../_shared.styled";
 
-export const CategoryContainer = styled(Container)`
-  background-color:${props=>props.bgColor};
-  margin:${gap.xl} ${gap.huge};
+export const CategoryContainer = styled.div`
+  background-color:${props => props.bgcolor};
+  margin:${gap.xl} min(4vw,${gap.huge});
   border-radius:${radius.strong};
   padding:${gap.xl};
-  padding-left:${gap.xl};
+  min-width: auto;
 
+  & > h3 {
+    font-size: ${fontSize.subheading};
+    font-weight: ${weight.bold};
+    color:${props => props.color};
+    margin-bottom: ${gap.l};
+  }
+
+  & > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: ${gap.xl};
+  }
 `;

@@ -1,7 +1,7 @@
-import {TabStyled} from "./Tab.styled";
+import { TabStyled } from "./Tab.styled";
 
-export default function Tab({tab,active}){
+export default function Tab( { tab, active } ) {
     return (
-        <TabStyled active={active} >{tab}</TabStyled>
+        <TabStyled active={ active } >{ tab }</TabStyled>
     )
 }
