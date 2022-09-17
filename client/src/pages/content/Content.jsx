@@ -1,8 +1,8 @@
 import React from "react";
 
-import Overview from "../components/Overview/Overview";
-import CardAlt from "../components/Card/CardAlt/CardAlt";
-import CardLarge from "../components/Card/CardLarge/CardLarge";
+import Overview from "../../components/Overview/Overview";
+import CardAlt from "../../components/Card/CardAlt/CardAlt";
+import CardLarge from "../../components/Card/CardLarge/CardLarge";
 
 export default function Content() {
     return (
