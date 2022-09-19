@@ -13,6 +13,7 @@ export const CardLargeStyled = styled.div`
 
     @media screen and (max-width:${breakpoints.mobile}){
         ${FlexCol};
+        margin:0;
 
         & img {
             border-radius:1.6rem;

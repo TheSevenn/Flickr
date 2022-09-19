@@ -1,10 +1,10 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 import Hero from "../components/Hero/Hero";
 import Search from "../components/Search/Search";
 import Tabs from "../components/Tabs/Tabs";
 import Category from "../components/Category/Category";
-import { colors } from "../components/_shared.styled";
 
 export default function Home() {
     return (
@@ -12,13 +12,16 @@ export default function Home() {
             <Hero />
             <Search />
             <Tabs />
-            <Category category="Latest Movies"
-                bgcolor={ colors.mutedBrandColor }
-                color={ colors.brandColor } />
-
-            <Category category="Latest TV Shows"
-                bgcolor={ colors.mutedBrightColor }
-                color={ colors.brightColor } />
+            <Routes>
+                <Route element={<Category category="Trending" />}>
+                    <Route path="/" />
+                    <Route path="/trending" />
+                </Route>
+                <Route path="/popular" element={<Category category="Popular" />} />
+                <Route path="/top_rated" element={<Category category="Top Rated" />} />
+                <Route path="/upcoming" element={<Category category="Upcoming" />} />
+                <Route path="/discover/" element={<Category category="Discover" />} />
+            </Routes>
         </React.Fragment>
     )
 }

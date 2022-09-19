@@ -7,7 +7,7 @@ max-width:15rem;
 border-radius: 0.8rem;
 ${FlexCol};
 box-shadow: 0 8px 8px #0000001a;
-margin:${gap.m};
+margin:${gap.l};
 
  & > h3{
    margin-top: ${gap.m};

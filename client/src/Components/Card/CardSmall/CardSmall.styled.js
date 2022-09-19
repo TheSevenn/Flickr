@@ -9,7 +9,7 @@ export const CardSmallStyled = styled.div`
 
   h3{
     color:${colors.blackColor};
-    font-size: ${fontSize.strong};
+    font-size: ${fontSize.text};
     padding-top: ${gap.s};
     padding-left:${gap.s};
     font-weight: ${weight.semiBold};

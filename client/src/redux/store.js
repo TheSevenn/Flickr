@@ -1,5 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+import contentReducer from "./features/content/contentSlice";
+import overviewReducer from "./features/overview/overviewSlice";
+
 export const store = configureStore( {
-    reducer: {}
+    reducer: {
+        content: contentReducer,
+        overview: overviewReducer
+    }
 } )

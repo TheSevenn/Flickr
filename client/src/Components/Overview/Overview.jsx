@@ -1,3 +1,5 @@
+import ReactTooltip from "react-tooltip";
+
 import {
     Backdrop, OverviewStyled,
     ContentOverview, Thumbnail,
@@ -22,10 +24,22 @@ export default function Overview() {
                             <em>&#8226;  55m</em>
                         </div>
                         <div>
-                            <AddtoWatchListIcon />
-                            <InWatchListIcon />
-                            <FavoriteIcon />
-                            <span><WatchTrailerIcon /></span>
+                            <AddtoWatchListIcon data-tip data-for="add-watchlist" />
+                            <InWatchListIcon data-tip data-for="in-watchlist" />
+                            <FavoriteIcon data-tip data-for="favorite" />
+                            <span data-tip data-for="watch-trailer"><WatchTrailerIcon /></span>
+                            <ReactTooltip id="favorite" place="top" effect="solid">
+                                add to favorite
+                            </ReactTooltip>
+                            <ReactTooltip id="watch-trailer" place="top" effect="solid">
+                                watch trailer
+                            </ReactTooltip>
+                            <ReactTooltip id="add-watchlist" place="top" effect="solid">
+                                add to watchlist
+                            </ReactTooltip>
+                            <ReactTooltip id="in-watchlist" place="top" effect="solid">
+                                in watchlist
+                            </ReactTooltip>
                         </div>
                         <Tagline>Some mistakes can never be erased</Tagline>
                         <p>Streaming On: { platform }</p>
