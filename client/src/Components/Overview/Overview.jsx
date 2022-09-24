@@ -1,27 +1,45 @@
+import { useEffect } from "react";
 import ReactTooltip from "react-tooltip";
+import { useSelector, useDispatch } from "react-redux";
 
 import {
-    Backdrop, OverviewStyled,
-    ContentOverview, Thumbnail,
-    AddtoWatchListIcon, InWatchListIcon,
-    FavoriteIcon, WatchTrailerIcon,
+    Backdrop, OverviewStyled, ContentOverview, Thumbnail,
+    AddtoWatchListIcon, InWatchListIcon, FavoriteIcon, WatchTrailerIcon,
     Title, Tagline
 } from "./Overview.styled";
+import { backdrop_size, image_base_url, poster_size } from "../../api/config";
+import { getOverviewById } from "../../redux/features/overview/overviewSlice";
+import { useAddress } from "../../customHooks/useAddress";
 
 export default function Overview() {
-    const platform = "Netflix";
-    const status = "ended";
+    // location and params are used to populate component with data incase of reload.
+    const { id, type } = useAddress();
+    const dispatch = useDispatch();
+
+    useEffect( () => {
+        const meta = { id, type };
+        dispatch( getOverviewById( meta ) );
+    }, [ dispatch, id, type ] );
+
+    const overview = useSelector( store => store.overview.overviewResponse );
+    const title = overview.title || overview.name;
+    const year = overview.release_date || overview.first_air_date;
+    const runtime = overview.runtime || overview.episode_run_time;
+    const poster = `${image_base_url}${poster_size.w780}/${overview.poster_path}`;
+    const backdrop = `${image_base_url}${backdrop_size.w780}/${overview.backdrop_path}`;
+
+
     return (
-        <Backdrop>
+        <Backdrop backdrop={backdrop}>
             <OverviewStyled>
                 <div>
-                    <Thumbnail src="https://img.fruugo.com/product/9/75/101193759_max.jpg" loading="lazy" />
+                    <Thumbnail src={poster} loading="lazy" />
                     <ContentOverview>
-                        <Title>Extracurricular ({ 2020 })</Title>
+                        <Title>{overview && title} ({year && year.substr( 0, 4 )})</Title>
                         <div>
                             <em>UA</em>
-                            <em>Crime,Drama</em>
-                            <em>&#8226;  55m</em>
+                            <em>{overview.genres && overview.genres[ 0 ].name}</em>
+                            <em>&#8226;  {overview && runtime}m</em>
                         </div>
                         <div>
                             <AddtoWatchListIcon data-tip data-for="add-watchlist" />
@@ -41,14 +59,14 @@ export default function Overview() {
                                 in watchlist
                             </ReactTooltip>
                         </div>
-                        <Tagline>Some mistakes can never be erased</Tagline>
-                        <p>Streaming On: { platform }</p>
+                        <Tagline>{overview && overview.tagline}</Tagline>
+                        <p>Streaming On: </p>
                         <div>
                             <h3>Overview:</h3>
-                            <p>Determined to escape a dead-end life, a gifted high school student turns to a world of serious crime to ensure he can pay for college.</p>
+                            <p>{overview && overview.overview}</p>
                         </div>
-                        <h4>Number of Seasons: { 1 }</h4>
-                        <p>Status: { status }</p>
+                        {overview.number_of_seasons && <h4>Number of Seasons: {overview.number_of_seasons}</h4>}
+                        <p>Status: {overview && overview.status}</p>
                     </ContentOverview>
                 </div>
             </OverviewStyled>

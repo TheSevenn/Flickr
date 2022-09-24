@@ -1,11 +1,19 @@
+import { getImageURL } from "../../../utils/getImageURL";
 import { CardAltStyled, ThumbnailAlt } from "./CardAlt.styled";
+import { poster_size } from "../../../api/config";
+import { useEffect } from "react";
+export default function CardAlt( { cas } ) {
 
-export default function CardAlt() {
+    const name = cas ? cas.name : null;
+    const profile_path = cas ? cas.profile_path : null;
+    const profile_url = getImageURL( profile_path, poster_size.w500 )
+    const character = cas ? cas.character : null;
+
     return (
         <CardAltStyled>
-            <ThumbnailAlt loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Park_Ju-hyun.png" />
-            <h3>Park ju-hyun</h3>
-            <h4>as Bae Gyu-ri</h4>
+            <ThumbnailAlt loading="lazy" src={profile_url} />
+            <h3>{name}</h3>
+            <h4>as {character}</h4>
         </CardAltStyled>
     )
 } 

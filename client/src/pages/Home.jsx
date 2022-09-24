@@ -14,7 +14,7 @@ export default function Home() {
             <Tabs />
             <Routes>
                 <Route element={<Category category="Trending" />}>
-                    <Route path="/" />
+                    <Route path="/" element={<Category category="Trending" />} />
                     <Route path="/trending" />
                 </Route>
                 <Route path="/popular" element={<Category category="Popular" />} />

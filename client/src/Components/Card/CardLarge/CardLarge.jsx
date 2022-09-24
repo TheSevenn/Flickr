@@ -1,16 +1,26 @@
+import { useEffect } from "react";
 import { CardLargeStyled, ThumbnailLarge } from "./CardLarge.styled";
+import { getImageURL } from "../../../utils/getImageURL";
+import { poster_size } from "../../../api/config";
 
-export default function CardLarge() {
+export default function CardLarge( { season } ) {
+
+
+    const poster_url = getImageURL( season && season.poster_path, poster_size.w500 );
+
+    const air_date = season && season.first_air_date;
+    const name = "fg";
+    const episodes = "f";
+    const season_overview = "fefe";
+
     return (
         <CardLargeStyled>
-            <ThumbnailLarge loading="lazy" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/movie-poster-template-design-21a1c803fe4ff4b858de24f5c91ec57f_screen.jpg?ts=1636996180" />
+            <ThumbnailLarge loading="lazy" src={poster_url} />
             <div>
-                <h2>Season 1</h2>
-                <h3>2020 | 10 Episodes</h3>
+                <h2>{name}</h2>
+                <h3>{air_date} | {episodes} Episodes</h3>
                 <p>
-                    Season 1 of Extracurricular premiered on April 29, 2020.
-                    Season 1 of Extracurricular premiered on April 29, 2020.
-                    Season 1 of Extracurricular premiered on April 29, 2020.
+                    {season_overview}
                 </p>
             </div>
         </CardLargeStyled>

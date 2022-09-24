@@ -10,18 +10,20 @@ import { colors } from "../_shared.styled";
 import { getTrending } from "../../redux/features/content/contentSlice";
 
 export default function Category( { category } ) {
-
     const dispatch = useDispatch();
     useEffect( () => {
+        console.log( "inside category" );
         dispatch( getTrending() );
     }, [ dispatch ] );
 
+
     function goToOverview( meta ) {
         dispatch( getOverviewById( meta ) );
-        console.log( meta.id );
+        // dispatch( getCastsById( meta ) );
     }
 
     const { movies, tvshows } = useSelector( store => store.content );
+    console.log( "Run in category" );
 
     return (
 
@@ -32,7 +34,7 @@ export default function Category( { category } ) {
                     <div>
                         {
                             movies.map( movie =>
-                                <Link key={movie.id} to={"/movies/" + movie.id + Math.floor( Math.random() * 100 )} onClick={() => { goToOverview( { id: movie.id, type: "movie" } ) }}>
+                                <Link key={movie.id} to={"/movies/" + movie.id + "/" + Math.floor( Math.random() * 100 )} onClick={() => { goToOverview( { id: movie.id, type: "movie" } ) }}  >
                                     <MovieCard {...movie} />
                                 </Link>
                             )
@@ -47,7 +49,7 @@ export default function Category( { category } ) {
                     <div>
                         {
                             tvshows.map( tvshow =>
-                                <Link key={tvshow.id} to={"/tvshows/" + tvshow.id + Math.floor( Math.random() * 100 )} onClick={() => { goToOverview( { id: tvshow.id, type: "tv" } ) }}>
+                                <Link key={tvshow.id} to={"/tvshows/" + tvshow.id + "/" + Math.floor( Math.random() * 100 )} onClick={() => { goToOverview( { id: tvshow.id, type: "tv" } ) }}>
                                     <TvShowCard {...tvshow} />
                                 </Link> )
                         }

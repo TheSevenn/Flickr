@@ -11,7 +11,7 @@ import {
 } from "../_shared.styled";
 
 export const Backdrop = styled.section`
-   background-image: url("https://lumiere-a.akamaihd.net/v1/images/the-last-jedi-theatrical-poster-tall-a_6a776211.jpeg?region=0%2C53%2C1536%2C768&width=960");
+   background-image: url(${props => props.backdrop});
    background-size:cover;
    background-repeat: no-repeat;
    background-position:top;
