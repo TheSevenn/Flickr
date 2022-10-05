@@ -3,10 +3,6 @@ import styled from "styled-components";
 import { colors, fontSize, gap, radius, weight } from "../../_shared.styled";
 
 export const CardSmallStyled = styled.div`
-  /* margin-left: ${gap.s};
-  margin-right: ${gap.l};
-  margin-bottom: ${gap.xl}; */
-
   h3{
     color:${colors.blackColor};
     font-size: ${fontSize.text};
@@ -31,7 +27,9 @@ export const CardSmallStyled = styled.div`
 `
 
 export const Thumbnail = styled.img`
-/* height: 22rem; */
+height: 22rem;
 width: 15rem;
+max-width: 15rem;
+background-color:#ccc5;
 border-radius: ${radius.strong};
 `

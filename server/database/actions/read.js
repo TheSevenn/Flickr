@@ -2,11 +2,11 @@ import accountModel from "../../models/AccountSchema.js";
 import userModel from "../../models/UserSchema.js";
 
 // read watchlist of user from db
-export const readWatchList = async ( userId ) => {
+export const readWatchList = async ( username ) => {
     try {
-        if( userId ) {
-            const { watchlist } = await accountModel.findOne( { userId: userId } );
-            return watchlist;
+        if( username ) {
+            const response = await userModel.findOne( { username: username } );
+            return response;
         }
     } catch( error ) {
         console.log( error.message );
@@ -46,5 +46,14 @@ export const readUserByEmail = async ( email ) => {
         }
     } catch( error ) {
         console.log( "error at readuserByemail: ", error.message );
+    }
+}
+
+export const readUserById = async ( id ) => {
+    try {
+        const user = await userModel.findById( id );
+        return user;
+    } catch( error ) {
+        console.log( error.message );
     }
 }

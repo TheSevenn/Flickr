@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getOverview, getCasts } from "../../../api/overview";
+import { getOverview } from "../../../api/overview";
 
 export const getOverviewById = createAsyncThunk( "overview/getOverview", async ( meta ) => {
     const response = await getOverview( meta.id, meta.type );

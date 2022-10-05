@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import {
-    BsFillBookmarkCheckFill,
-    BsFillBookmarkPlusFill
-} from "react-icons/bs";
+import { BsFillBookmarkFill } from "react-icons/bs";
 import { FaHeart, FaPlay } from "react-icons/fa";
 
 import {
@@ -160,14 +157,7 @@ box-shadow: 0px 4px 8px #000a;
 
 // icons styled
 
-export const AddtoWatchListIcon = styled( BsFillBookmarkPlusFill )`
-    color:${colors.mutedLightColor};
-    font-size:${fontSize.subheading} ;
-    margin-right: ${gap.l};
-    cursor: pointer;
-    `
-
-export const InWatchListIcon = styled( BsFillBookmarkCheckFill )`
+export const WatchListIcon = styled( BsFillBookmarkFill )`
     color:${colors.mutedLightColor};
     font-size:${fontSize.subheading} ;
     margin-right: ${gap.l};

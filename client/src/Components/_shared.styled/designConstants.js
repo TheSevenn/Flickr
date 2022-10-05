@@ -31,6 +31,7 @@ const fontSize = {
     strong: "1.8rem",
     textAlt: "1.7rem",
     text: "1.6rem",
+    emAlt: "1.5rem",
     em: "1.4rem",
 }
 

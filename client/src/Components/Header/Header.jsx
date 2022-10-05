@@ -1,21 +1,34 @@
 import React from "react";
-import { HeaderStyled, MenuIcon, UserStyled, FavoriteIcon, BookmarkIcon, CancelIcon } from "./Header.styled";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
+import { HeaderStyled, MenuIcon, UserStyled, FavoriteIcon, BookmarkIcon, CancelIcon } from "./Header.styled";
 import logo from "../../assets/flickrLogo.svg";
-// import brand from "../../assets/flickr.svg";
 import { LogoStyled, Button, ButtonInverted } from "../_shared.styled";
 import Modal from "../Modal/Modal";
+import { openModal, sign_out } from "../../redux/features/auth//authSlice";
 
 export default function Header() {
-    const [ auth, setAuth ] = React.useState( false );
+    const dispatch = useDispatch();
+    // states to implement responsive navbar menu button
     const [ navActive, setNavActive ] = React.useState( false );
+    const authStatus = useSelector( store => store.auth.response );
 
-    function handleSignIn() {
-        setAuth( true );
+    // opens modal with signin card
+    function openSignIn() {
+        dispatch( openModal( "signin" ) );
+        setNavActive( false );
     }
 
+    // opens modal with signup card
+    function openSignup() {
+        dispatch( openModal( "signup" ) );
+        setNavActive( false );
+    }
+
+
     function handleSignOut() {
-        setAuth( false )
+        dispatch( sign_out() );
     }
 
     function handleNavOpen() {
@@ -27,13 +40,15 @@ export default function Header() {
 
     return (
         <HeaderStyled>
-            <li>
-                <LogoStyled src={ logo } size="6rem" />
-            </li>
-            <UserStyled navStatus={ navActive }>
-                <CancelIcon onClick={ handleNavClose } navactive={ navActive ? 1 : 0 } />
+            <Link to="/">
+                <li>
+                    <LogoStyled src={logo} size="6rem" />
+                </li>
+            </Link>
+            <UserStyled navStatus={navActive}>
+                <CancelIcon onClick={handleNavClose} navactive={navActive ? 1 : 0} />
                 {
-                    auth ?
+                    authStatus && authStatus.user_access_token ?
                         <React.Fragment>
                             <span>
                                 <BookmarkIcon />Watchlist
@@ -42,13 +57,13 @@ export default function Header() {
                                 <FavoriteIcon />Favorites
                             </span>
                             <div>
-                                <ButtonInverted onClick={ handleSignOut }>Sign out</ButtonInverted>
+                                <ButtonInverted onClick={handleSignOut}>Sign out</ButtonInverted>
                             </div>
-                        </React.Fragment> : <React.Fragment><Button>Sign up</Button>
-                            <ButtonInverted onClick={ handleSignIn } >Sign in</ButtonInverted></React.Fragment>
+                        </React.Fragment> : <React.Fragment><Button onClick={openSignup}>Sign up</Button>
+                            <ButtonInverted onClick={openSignIn} >Sign in</ButtonInverted></React.Fragment>
                 }
             </UserStyled>
-            <MenuIcon onClick={ handleNavOpen } navactive={ navActive ? 1 : 0 } />
+            <MenuIcon onClick={handleNavOpen} navactive={navActive ? 1 : 0} />
             <Modal />
         </HeaderStyled>
     )

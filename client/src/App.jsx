@@ -6,7 +6,7 @@ import Header from "./components/Header/Header";
 import Home from "./pages/Home";
 import Footer from "./components/Footer/Footer";
 import Content from "./pages/content/Content";
-import Seasons from "./pages/Seasons";
+import Seasons from "./pages/Seasons/Seasons";
 
 export default function App() {
 
@@ -17,9 +17,10 @@ export default function App() {
             <section style={{ marginBottom: "auto" }}>
                 <Routes>
                     <Route path="/*" element={<Home />} />
-                    <Route path="/movies/:_id/:key" element={<Content />} />
-                    <Route path="/tvshows/:_id/:key" element={<Content />} />
-                    <Route path="/tvshows/:_id/:key/seasons" element={<Seasons />} />
+                    {/* <Route index element={<Home />} /> */}
+                    <Route path="/movie/:_id/:key" element={<Content />} />
+                    <Route path="/tv/:_id/:key" element={<Content />} />
+                    <Route path="/tv/:_id/:key/seasons" element={<Seasons />} />
                 </Routes>
             </section>
             <Footer />

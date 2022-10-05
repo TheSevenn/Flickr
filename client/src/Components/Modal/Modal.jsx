@@ -1,25 +1,24 @@
 import ReactDom from "react-dom";
-import { FaArrowRight } from "react-icons/fa"
+import { useSelector, useDispatch } from "react-redux";
 
-import { ModalContainer, ModalStyled, CancelIcon } from "./Modal.styled";
-import { LogoStyled } from "../_shared.styled/Logo.styled";
-import { ButtonRound } from "../_shared.styled/Button.styled";
-import logo from "../../assets/flickrLogo.svg";
-import { fontSize } from "../_shared.styled";
+import { ModalContainer } from "./Modal.styled";
+import SignIn from "./SignIn/SignIn";
+import SignUp from "./SignUp/SignUp";
+import FinishUp from "./FinishUp/FinishUp";
+import { closeModal } from "../../redux/features/auth/authSlice"
 
 export default function Modal() {
+    const dispatch = useDispatch();
+    const { modal, modalState, message } = useSelector( store => store.auth );
+
+    if( message && message.message === "user signed up succesfully" ) {
+        dispatch( closeModal() );
+    }
     return ReactDom.createPortal(
-        <ModalContainer>
-            <ModalStyled>
-                <CancelIcon />
-                <LogoStyled src={ logo } size="6rem" />
-                <h3>
-                    Sign up
-                </h3>
-                <input type="text" name="nickName" id="nickName" placeholder="Your Nickname" />
-                <input type="text" name="userName" id="userName" placeholder="choose a username" />
-                <ButtonRound><FaArrowRight style={ { fontSize: fontSize.subheading, horizontalAlign: "center" } } /></ButtonRound>
-            </ModalStyled>
+        <ModalContainer state={modalState}>
+            {modal === "signin" ? <SignIn /> : ""}
+            {modal === "signup" && message.message !== "continue" ? <SignUp /> : ""}
+            {message.message === "continue" ? <FinishUp /> : ""}
         </ModalContainer>,
         document.getElementById( "portal" )
     )

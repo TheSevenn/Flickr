@@ -12,7 +12,7 @@ export const ModalContainer = styled.div`
   backdrop-filter: blur(9px);
   background-color: rgba(0,0,0,0.5);
   z-index: 1;
-  display: none;
+  display: ${props => props.state ? "flex" : "none"};
 
 
   h3{

@@ -34,7 +34,7 @@ export default function Category( { category } ) {
                     <div>
                         {
                             movies.map( movie =>
-                                <Link key={movie.id} to={"/movies/" + movie.id + "/" + Math.floor( Math.random() * 100 )} onClick={() => { goToOverview( { id: movie.id, type: "movie" } ) }}  >
+                                <Link key={movie.id} to={"/movie/" + movie.id + "/" + Math.floor( Math.random() * 100 )} onClick={() => { goToOverview( { id: movie.id, type: "movie" } ) }}  >
                                     <MovieCard {...movie} />
                                 </Link>
                             )
@@ -49,7 +49,7 @@ export default function Category( { category } ) {
                     <div>
                         {
                             tvshows.map( tvshow =>
-                                <Link key={tvshow.id} to={"/tvshows/" + tvshow.id + "/" + Math.floor( Math.random() * 100 )} onClick={() => { goToOverview( { id: tvshow.id, type: "tv" } ) }}>
+                                <Link key={tvshow.id} to={"/tv/" + tvshow.id + "/" + Math.floor( Math.random() * 100 )} onClick={() => { goToOverview( { id: tvshow.id, type: "tv" } ) }}>
                                     <TvShowCard {...tvshow} />
                                 </Link> )
                         }

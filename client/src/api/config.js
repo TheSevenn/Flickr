@@ -3,6 +3,8 @@ export const base_url = process.env.REACT_APP_BASE_URL_V3;
 
 export const api_key = process.env.REACT_APP_API_KEY_V3;
 
+export const flickr_url = process.env.REACT_APP_FLICKR_URL;
+
 export const image_base_url = "https://image.tmdb.org/t/p/";
 
 

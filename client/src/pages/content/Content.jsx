@@ -16,12 +16,12 @@ export default function Content() {
 
 
     console.log( "Run in Content" );
-    const { seasons, credits } = useSelector( store => store.overview.overviewResponse );
+    const { seasons, credits, title } = useSelector( store => store.overview.overviewResponse );
     console.log( "seaasons are:", seasons, "and casts:", credits );
     return (
         <React.Fragment>
             <Overview />
-            <Casts seasons={seasons} credits={credits} />
+            <Casts seasons={seasons} credits={credits} title={title} />
         </React.Fragment>
     )
 }

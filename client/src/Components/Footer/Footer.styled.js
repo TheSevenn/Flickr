@@ -8,7 +8,7 @@ export const FooterStyled = styled.footer`
     justify-content: center;
     align-items: center;
     gap:${gap.l};
-  
+    margin-block-start:12rem;
     
     &>div{
         ${FlexCol};
